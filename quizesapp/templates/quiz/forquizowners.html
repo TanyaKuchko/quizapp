@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+    <h2 class="text-center pt-2">Your quizzes: </h2>
+    <a class="btn btn-secondary add-new-quiz" href="{% url 'create-quiz' %}">Add new quiz</a>
+ <style>
+
+ </style>
+
+<div class="album py-5 bg-light" bis_skin_checked="1">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        {% for quiz in quizzes %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div style="height:100%" class="card shadow-sm">
+              <p class="aligncenter">
+            <img src="{{ quiz.logo.url }}" width="250px" height="250px">
+              </p>
+              <style>
+              .aligncenter {
+               text-align: center;
+                }
+               </style>
+            <div class="card-body">
+              <h3 class="card-text">{{quiz.name}}</h3>
+              <h6 class="card-text">{{quiz.city}}</h6>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'quiz-details' quiz_id=quiz.id %}" class="btn btn-sm btn-outline-secondary">Details</a>
+                  <a href="{% url 'create-event' quiz_id=quiz.id %}"  class="btn btn-sm btn-outline-secondary">Add new event</a>
+                 </div>
+                  <form action="{% url 'delete-quiz' quiz_id=quiz.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                  </form>
+
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}

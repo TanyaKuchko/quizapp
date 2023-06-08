@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="container">
+<h2 class="text-center pt-2">Add your quiz</h2>
+    <section class="pb-4">
+   <div class="bg-white border rounded-5" bis_skin_checked="1">
+ <div class="container">
+    </div>
+ </div>
+    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+    </section>
+    </section>
+
+
+
+    <form style="width: 100%;" method="post" class="pt-2" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <div class="col-md-4">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control{% if form.name.errors %} is-invalid{% endif %}"
+           id="name" name="name" value="{{ form.name.value }}" required>
+        {% for error in form.name.errors %}
+            <div id="nameFeedback" class="invalid-feedback">
+        {{ error }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control{% if form.city.errors %} is-invalid{% endif %}"
+           id="city" name="city" value="{{ form.city.value }}" required>
+        {% for error in form.name.errors %}
+            <div id="cityFeedback" class="invalid-feedback">
+        {{ error }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <label for="max_number_of_participants" class="form-label">Max number of participants in the team</label>
+        <input type="text" class="form-control{% if form.max_number_of_participants.errors %} is-invalid{% endif %}"
+           id="max_number_of_participants" name="max_number_of_participants" value="{{ form.max_number_of_participants.value }}" required>
+        {% for error in form.name.errors %}
+            <div id="max_number_of_participantsFeedback" class="invalid-feedback">
+        {{ error }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <label for="logo" class="form-label">Logo</label>
+        <input type="file"  class="form-control{% if form.logo.errors %} is-invalid{% endif %}"
+           id="logo" accept="image/*" name="logo" value="{{ form.logo.value }}" required>
+        {% for error in form.logo.errors %}
+            <div id="logoFeedback" class="invalid-feedback">
+        {{ error }}
+            </div>
+        {% endfor %}
+    </div>
+
+        <p style="Margin: 30px 0px 50px 0px">
+            <button type="submit" class="btn btn-primary" style="Padding: 6px 195px">SAVE</button>
+        </p>
+    </form>
+
+
+{% endblock %}

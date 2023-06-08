@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container">
+
+
+<h4>It's great that you decided to join in. You are sure to enjoy</h4>
+<h5>Enter your details and click "Sign up for the game"</h5>
+
+<form style="width: 100%;" method="post" class="pt-2" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="col-md-4">
+    <label for="team_name" class="form-label">Team Name</label>
+    <input type="text" class="form-control{% if form.team_name.errors %} is-invalid{% endif %}"
+           id="team_name" name="team_name" value="{{ form.team_name.value }}" required>
+    {% for error in form.team_name.errors %}
+     <div id="team_nameFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="number_of_participants" class="form-label">Number of people in the team</label>
+    <input type="text" class="form-control{% if form.number_of_participants.errors %} is-invalid{% endif %}"
+           id="number_of_participants" name="number_of_participants" value="{{ form.number_of_participants.value }}" required="">
+     {% for error in form.number_of_participants.errors %}
+     <div id="number_of_participantsFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="contact_person" class="form-label">Contact person</label>
+    <input type="text" class="form-control{% if form.contact_person.errors %} is-invalid{% endif %}"
+           id="contact_person" name="contact_person" value="{{ form.contact_person.value }}" required>
+    {% for error in form.contact_person.errors %}
+     <div id="contact_personFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control{% if form.email.errors %} is-invalid{% endif %}"
+           id="email" name="email" aria-describedby="emailHelp" value="{{ form.email.value }}" required>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+     {% for error in form.email.errors %}
+     <div id="emailFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="phone_number" class="form-label">Phone number</label>
+    <input type="text" class="input-medium bfh-phone{% if form.phone_number.errors %} is-invalid{% endif %}" data-format="+(ddd)(ddd) ddd-dd-dd"
+           id="phone_number" name="phone_number" value="{{ form.phone_number.value }}" required>
+    {% for error in form.phone_number.errors %}
+     <div id="phone_numberFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+  <button type="submit" class="btn btn-primary" >SIGN UP FOR THE GAME</button>
+
+</form>
+
+
+</main>
+
+
+
+{% endblock %}

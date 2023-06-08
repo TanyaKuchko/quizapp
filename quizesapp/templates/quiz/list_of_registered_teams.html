@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bd-example">
+  <h3 class="text-center pt-2">Registered teams:</h3>
+  {% if teams %}
+  <table class="table">
+      <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Team</th>
+      <th scope="col">Number of participants</th>
+      <th scope="col">Contact person</th>
+      <th scope="col">email</th>
+      <th scope="col">Phone number</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in teams %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{i.team}}</td>
+      <td>{{i.number_of_participants}}</td>
+      <td>{{i.contact_person}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.phone_number}}</td>
+    </tr>
+      {% endfor %}
+  </tbody>
+
+  </table>
+  {% else %}
+  <h1 class="text-center pt-2">Nobody has registered yet</h1>
+  {% endif %}
+</div>
+
+{% endblock %}

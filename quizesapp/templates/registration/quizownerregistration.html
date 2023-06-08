@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section>
+    <h2 class="text-center pt-2">Create your quizaccount</h2>
+
+    <section class="w-500 d-flex justify-content-center ">
+        <div class="bg-white " >
+            <div class="container">
+
+
+      <form style="width: 100%;" method="post" class="pt-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-floating mb-1">
+          <input type="text" id="username" name="username" class="form-control{% if user_form.username.errors %} is-invalid{% endif %}" placeholder="Username"
+                 value="{{ user_form.username.value }}" required>
+            <label for="username">Username*</label>
+            {% for error in user_form.username.errors %}
+            <div id="usernameFeedback" class="invalid-feedback">
+              {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="form-floating mb-1">
+          <input type="text" id="first_name" name="first_name" class="form-control{% if user_form.first_name.errors %} is-invalid{% endif %}" placeholder="First name"
+                 value="{{ user_form.first_name.value }}" required>
+            <label for="first_name">First name*</label>
+            {% for error in user_form.first_name.errors %}
+            <div id="first_nameFeedback" class="invalid-feedback">
+              {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-floating mb-1 ">
+            <input type="last_name" id="last_name" name="last_name" class="form-control{% if user_form.last_name.errors %} is-invalid{% endif %}" placeholder="Last name"
+                   value="{{ user_form.last_name.value }}" required>
+            <label for="last_name">Last name*</label>
+            {% for error in user_form.last_name.errors %}
+            <div id="last_nameFeedback" class="invalid-feedback">
+              {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-floating mb-1">
+            <input type="email" id="email" name="email" class="form-control{% if user_form.email.errors %} is-invalid{% endif %}" placeholder="Email address"
+                   value="{{ user_form.email.value }}" required>
+            <label for="email">Email address*</label>
+            {% for error in user_form.email.errors %}
+            <div id="emailFeedback" class="invalid-feedback">
+              {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-floating mb-1">
+          <input type="password" id="password1" name="password1" class="form-control{% if user_form.password1.errors %} is-invalid{% endif %}" placeholder="Password*" required>
+            <label for="password1">Password*</label>
+            {% for error in user_form.password1.errors %}
+            <div id="password1Feedback" class="invalid-feedback">
+              {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-floating mb-1">
+            <input type="password" id="password2" name="password2" class="form-control{% if user_form.password2.errors %} is-invalid{% endif %}"
+                   placeholder="Repeat your password*" required>
+            <label for="password2">Repeat your password*</label>
+            {% for error in user_form.password2.errors %}
+            <div id="password2Feedback" class="invalid-feedback">
+              {{ error }}
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="col d-flex justify-content-center mt-3" >
+          <button type="submit" class="btn btn-primary btn-block mb-2">Create new account</button>
+        </div>
+
+      </form>
+    </section>
+</section>
+{% endblock content %}

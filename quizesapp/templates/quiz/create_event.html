@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container">
+
+
+<form style="width:100%;" method="post" class="pt-2 create form" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="col-md-4">
+    <label for="quiz" class="form-label">Name of the game</label>
+    <input type="text" class="form-control{% if form.quiz.errors %} is-invalid{% endif %}"
+           id="quiz" name="quiz" value="{{ form.quiz.value }}" required>
+    {% for error in form.quiz.errors %}
+     <div id="quizFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="date_of_event" class="form-label">Date of event</label>
+    <input type="datetime-local" class="form-control{% if form.date_of_event.errors %} is-invalid{% endif %}"
+           id="date_of_event" name="date_of_event" value="{{ form.date_of_event.value }}" required="">
+     {% for error in form.date_of_event.errors %}
+     <div id="date_of_eventFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="place" class="form-label">Place</label>
+    <input type="text" class="form-control{% if form.place.errors %} is-invalid{% endif %}"
+           id="place" name="place" value="{{ form.place.value }}" required>
+    {% for error in form.place.errors %}
+     <div id="placeFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <label for="max_number_of_teams" class="form-label">Max number of teams</label>
+    <input type="text" class="form-control{% if form.max_number_of_teams.errors %} is-invalid{% endif %}"
+           id="max_number_of_teams" name="max_number_of_teams" value="{{ form.max_number_of_teams.value }}" required>
+    {% for error in form.place.errors %}
+     <div id="max_number_of_teamsFeedback" class="invalid-feedback">
+       {{ error }}
+     </div>
+    {% endfor %}
+  </div>
+
+  </div>
+  <button type="submit" class="btn btn-primary" >SIGN UP FOR REGISTER YOUR GAME</button>
+
+</form>
+</main>
+
+{% endblock %}
