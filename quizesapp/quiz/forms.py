@@ -24,7 +24,7 @@ class TeamRegistrationForm(forms.Form):
         super(TeamRegistrationForm, self).__init__(*args, **kwargs)
         self.quiz = quiz
 
-    team_name = forms.CharField(max_length=50)
+    team_name = forms.CharField(max_length=100)
     number_of_participants = forms.IntegerField()
     contact_person = forms.CharField()
     email = forms.EmailField()

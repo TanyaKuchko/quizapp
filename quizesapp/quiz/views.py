@@ -153,16 +153,3 @@ class QuizDetailsView(TemplateView):
         }
 
         return render(request, self.template_name, params)
-
-
-class RegisteredTeamsView(TemplateView):
-    template_name = "quiz/list_of_registered_teams.html"
-
-    def get(self, request, game_id):
-        game = Game.objects.get(id=game_id)
-        teams = GameRegistration.objects.filter(game=game)
-
-        return render(request, self.template_name, {'teams': teams})
-
-
-

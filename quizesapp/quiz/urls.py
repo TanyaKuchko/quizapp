@@ -9,7 +9,6 @@ from .views import (
     DeleteQuiz,
     CreateEventView,
     QuizDetailsView,
-    RegisteredTeamsView,
 
 )
 
@@ -24,6 +23,5 @@ urlpatterns = [
     path("delete_quiz-<int:quiz_id>", DeleteQuiz.as_view(), name="delete-quiz"),
     path("create_event-<int:quiz_id>", CreateEventView.as_view(), name="create-event"),
     path("quiz_details-<int:quiz_id>", QuizDetailsView.as_view(), name='quiz-details'),
-    path("registered_teams-<int:game_id>", RegisteredTeamsView.as_view(), name='registered-teams'),
 
 ]
